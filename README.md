@@ -17,8 +17,11 @@ The following guides illustrate how to use some features concretely:
 
 ### Commands
 Execute the build
+```shell
+docker build -t polarbookshop/catalog-service:0.0.1 .
+```
 
-* [docker build -t polarbookshop/catalog-service:0.0.1 .]
-
+```shell
 Run the image
-* [docker run --rm --name catalog-service -p 8080:8080 polarbookshop/catalog-service:0.0.1]
+docker run --rm --name catalog-service -p 8080:8080 polarbookshop/catalog-service:0.0.1
+```
