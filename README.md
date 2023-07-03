@@ -16,12 +16,82 @@ The following guides illustrate how to use some features concretely:
 * [Building REST services with Spring](https://spring.io/guides/tutorials/rest/)
 
 ### Commands
-Execute the build
-```shell
+Build the project image in Docker
+```shell 
 docker build -t polarbookshop/catalog-service:0.0.1 .
 ```
 
+Run the image in Docker
 ```shell
-Run the image
 docker run --rm --name catalog-service -p 8080:8080 polarbookshop/catalog-service:0.0.1
+```
+
+Start up minikube 
+```shell
+minikube start
+```
+
+Stop minikube
+```shell
+minikube stop
+```
+
+Load the image in minikube
+```shell
+minikube image load polarbookshop/catalog-service:0.0.1
+```
+
+Create the deployment of the image specified
+```shell
+kubectl create deployment catalog-service --image=polarbookshop/catalog-service:0.0.1
+```
+
+Display minikube dashboard
+```shell
+minikube dashboard
+```
+
+Display deployment information
+```shell
+kubectl get deployment
+```
+
+Display pod information
+```shell
+kubectl get pod
+```
+
+Display the logs of the service
+```shell
+kubectl logs deployment/catalog-service
+```
+
+Expose the app to be accessible
+```shell
+kubectl expose deployment catalog-service --name catalog-service --port=8080
+```
+
+Display service information
+```shell
+kubectl get service catalog-service
+```
+
+Map the service port with the localhost port
+```shell
+kubectl port-forward service/catalog-service 8000:8080
+```
+
+To close the mapping
+```shell
+Ctrl+c
+```
+
+Delete the service
+```shell
+kubectl delete service catalog-service
+```
+
+Delete the deployment
+```shell
+kubectl delete deployment catalog-service
 ```
