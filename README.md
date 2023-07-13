@@ -138,3 +138,9 @@ http DELETE :9001/books/1234567890
 | `/books/{isbn}` | `PUT`    | Book       | 200    | Book           | Update the book with the given ISBN. |
 |                 |          |            | 201    | Book           | Create a book with the given ISBN. |
 | `/books/{isbn}` | `DELETE` |            | 204    |                | Delete the book with the given ISBN. |
+
+
+Checking validations
+```shell
+http POST :9001/books author="Jon Snow" title="" isbn="123ABC456Z" price=9.90
+```
