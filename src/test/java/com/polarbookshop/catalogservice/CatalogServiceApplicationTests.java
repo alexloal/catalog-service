@@ -4,9 +4,11 @@ import com.polarbookshop.catalogservice.entity.Book;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.web.reactive.server.WebTestClient;
 
 import static org.assertj.core.api.Assertions.assertThat;
+
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 class CatalogServiceApplicationTests {
@@ -15,6 +17,7 @@ class CatalogServiceApplicationTests {
     private WebTestClient webTestClient;
 
     @Test
+    @DirtiesContext(methodMode = DirtiesContext.MethodMode.AFTER_METHOD)
     void whenGetRequestWithIdThenBookReturned() {
         String isbn = "1231231230";
         Book book = createNewBook(isbn);
@@ -40,6 +43,7 @@ class CatalogServiceApplicationTests {
     }
 
     @Test
+    @DirtiesContext(methodMode = DirtiesContext.MethodMode.AFTER_METHOD)
     void whenPostRequestThenBookCreated() {
         Book expectedBook = createNewBook("1231231231");
 
@@ -56,6 +60,7 @@ class CatalogServiceApplicationTests {
     }
 
     @Test
+    @DirtiesContext(methodMode = DirtiesContext.MethodMode.AFTER_METHOD)
     void whenPutRequestThenBookUpdated() {
         String isbn = "1231231232";
         Book bookToCreate = createNewBook(isbn);
@@ -83,6 +88,7 @@ class CatalogServiceApplicationTests {
     }
 
     @Test
+    @DirtiesContext(methodMode = DirtiesContext.MethodMode.AFTER_METHOD)
     void whenDeleteRequestTheBookDeleted() {
         var bookIsbn = "1231231233";
         Book bookToCreate = createNewBook(bookIsbn);
